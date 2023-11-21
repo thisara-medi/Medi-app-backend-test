@@ -39,7 +39,7 @@ jobs:
     needs: build
     environment:
       name: 'Production'
-      url: 'pmsendpoints.scm.azurewebsites.net:443'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     
     steps:
       - name: Download artifact from build job
@@ -54,4 +54,4 @@ jobs:
           app-name: 'PmsEndpoints'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1B9841553CAA4C2AB048E9FB109FEDAE }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_BC81086217E34BAF8929A1239C35E35A }}
